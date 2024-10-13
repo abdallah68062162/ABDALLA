@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رياضيات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e7e5e5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 0;
+        }
+        main {
+            padding: 20px;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 80%;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> مرحبا بكم فى  الرياضيات</h1>
+    </header>
+    <main>
+        <div class="content">
+            <h2>اسأل أي سؤال رياضي</h2>
+            <input type="text" id="mathQuestion" placeholder="اكتب السؤال هنا" />
+            <button onclick="getMathAnswer()">احصل على إجابة</button>
+            <p id="mathAnswer"></p>
+        </div>
+    </main>
+    <footer>
+        <p>جميع الحقوق محفوظة © 2024</p>
+        <P>برمجة /عبد الله عمر الشايب</P>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <script>
+        function getMathAnswer() {
+            var question = document.getElementById('mathQuestion').value;
+            var answer = document.getElementById('mathAnswer');
+
+            if(question.length > 0) {
+                try {
+                    var result = math.evaluate(question);
+                    answer.textContent = "الإجابة: " + result;
+                } catch (error) {
+                    answer.textContent = "حدث خطأ أثناء الحساب.";
+                }
+            } else {
+                answer.textContent = "الرجاء إدخال سؤال.";
+            }
+        }
+    </script>
+</body>
+</html>
+
